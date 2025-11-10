@@ -24,7 +24,7 @@ def xget_metricas():
         "Nome": " e ".join(xnome_integrantes),
         "PID": pid,
         "Memória usada (MB)": round(memoria_mb, 2),
-        "CPV (%)": round(cpu_percent, 2),  # V no lugar de U conforme instrução
+        "CPU (%)": round(cpu_percent, 2),  
         "Sistema Operacional": so
     }
 
