@@ -3,7 +3,7 @@ import os
 import platform
 import psutil
 
-# Lista com os nomes completos dos integrantes (edite aqui)
+# Lista com os nomes completos dos integrantes 
 nome_integrantes = [
     "Julia Machado Kociolek",
     "Antonio Bernardo Zilio Tomasi",
