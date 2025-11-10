@@ -4,7 +4,7 @@ import platform
 import psutil
 
 # Lista com os nomes completos dos integrantes (edite aqui)
-xnome_integrantes = [
+nome_integrantes = [
     "Julia Machado Kociolek",
     "Antonio Bernardo Zilio Tomasi",
     "Gustavo Lona Grespan"
@@ -14,14 +14,14 @@ xnome_integrantes = [
 APP = Flask(__name__)
 
 # Função interna para coletar métricas do processo
-def xget_metricas():
+def get_metricas():
     proc = psutil.Process(os.getpid())
     pid = proc.pid
     memoria_mb = proc.memory_info().rss / (1024 * 1024)
     cpu_percent = proc.cpu_percent(interval=0.1)
     so = platform.system()
     return {
-        "Nome": " e ".join(xnome_integrantes),
+        "Nome": " e ".join(nome_integrantes),
         "PID": pid,
         "Memória usada (MB)": round(memoria_mb, 2),
         "CPU (%)": round(cpu_percent, 2),  
@@ -30,18 +30,18 @@ def xget_metricas():
 
 # Rota /info — exibe somente os nomes dos integrantes (JSON)
 @APP.route('/info')
-def xinfo():
-    return jsonify({"Nome": " e ".join(xnome_integrantes)})
+def info():
+    return jsonify({"Nome": " e ".join(nome_integrantes)})
 
 # Rota /metricas — retorna as informações pedidas em JSON
 @APP.route('/metricas')
-def xmetricas():
-    dados = xget_metricas()
+def metricas():
+    dados = get_metricas()
     return jsonify(dados)
 
 # Rota raiz opcional para ver algo no navegador
 @APP.route('/')
-def xindex():
+def index():
     return (
         "<pre>Servidor Flask ativo. Rotas:\n"
         "/info -> nomes dos integrantes\n"
